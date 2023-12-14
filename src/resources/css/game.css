@@ -1,0 +1,35 @@
+@font-face {
+    -fx-font-family: "Ghastly Panic";
+    src: url("fonts/GhastlyPanic.ttf");
+}
+
+#pane {
+    -fx-background-color: black;
+}
+
+
+.game-title {
+    -fx-font-family: "Ghastly Panic";
+}
+
+.play, .quit {
+    -fx-background-color: transparent;
+}
+
+.play:hover, .quit:hover {
+    -fx-border-style: solid none solid none;
+    -fx-border-width: 2;
+    -fx-border-color: #410404;
+}
+
+.play:pressed, .quit:pressed, .continue {
+    -fx-border-style: solid solid solid solid;
+    -fx-border-color: black;
+    -fx-background-color: #410404;
+    -fx-text-fill: white;
+}
+
+.click, .skip {
+    -fx-background-color: transparent;
+    -fx-text-fill: #c00a0a;
+}

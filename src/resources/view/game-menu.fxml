@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" stylesheets="@../css/game.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <ImageView>
+      <fitWidth>500</fitWidth>
+      <preserveRatio>true</preserveRatio>
+      <Image url="@../css/img/hauntedMansion.jpg" />
+   </ImageView>
+   <ImageView fitHeight="395.0" fitWidth="244.0" layoutX="24.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../css/img/white-curtain.png" />
+      <effect>
+         <Bloom />
+      </effect>
+   </ImageView>
+   <Label blendMode="SRC_ATOP" layoutX="15.0" layoutY="52.0" prefHeight="88.0" prefWidth="258.0" styleClass="game-title" text="The Haunted Mansion" textFill="#791111">
+      <font>
+         <Font size="58.0" />
+      </font>
+      <effect>
+         <DropShadow />
+      </effect>
+   </Label>
+   <VBox alignment="TOP_CENTER" layoutX="70.0" layoutY="181.0" prefHeight="107.0" prefWidth="148.0" spacing="20.0">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+
+      <VBox alignment="TOP_CENTER" prefHeight="36.0" prefWidth="84.0" spacing="20.0">
+         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onNewGameButtonClick" prefHeight="41.0" prefWidth="195.0" styleClass="play" text="NEW GAME">
+            <font>
+               <Font name="Comic Sans MS Bold" size="15.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </Button>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </VBox>
+      <VBox prefHeight="36.0" prefWidth="65.0">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onQuitButtonClick" prefHeight="42.0" prefWidth="196.0" styleClass="quit" text="QUIT">
+            <font>
+               <Font name="Comic Sans MS Bold" size="15.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </Button>
+      </VBox>
+   </VBox>
+
+   <stylesheets>
+      <URL value="@../css/game.css" />
+   </stylesheets>
+</AnchorPane>

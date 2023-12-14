@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="pane" maxHeight="500.0" maxWidth="500.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <Label fx:id="gameStory" alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="36.0" prefHeight="350.0" prefWidth="443.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <font>
+         <Font name="Calibri Light" size="18.0" />
+      </font>
+   </Label>
+    <Button fx:id="clickToContinue" alignment="BOTTOM_CENTER" cache="true" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onContinueButtonAction" prefHeight="500.0" prefWidth="500.0" styleClass="click" text="Press Enter or Click to Continue...">
+        <font>
+          <Font name="Comic Sans MS Bold Italic" size="12.0" />
+        </font>
+      <padding>
+         <Insets bottom="50.0" />
+      </padding>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+    </Button>
+   <Button fx:id="skip" layoutX="374.0" layoutY="386.0" mnemonicParsing="false" onAction="#onSkipButtonAction" styleClass="skip" text="&gt;Skip">
+      <font>
+         <Font name="System Bold Italic" size="12.0" />
+      </font>
+      <effect>
+         <InnerShadow>
+            <color>
+               <Color red="0.19736842811107635" green="0.10873538255691528" blue="0.10873538255691528" />
+            </color>
+         </InnerShadow>
+      </effect>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor></Button>
+
+    <stylesheets>
+        <URL value="@../css/game.css" />
+    </stylesheets>
+</AnchorPane>

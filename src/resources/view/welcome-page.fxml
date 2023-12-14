@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="363.0" prefWidth="397.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <ImageView layoutX="-87.0" layoutY="-3.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+      <fitWidth>700</fitWidth>
+      <fitHeight>500</fitHeight>
+      <preserveRatio>true</preserveRatio>
+      <Image url="@../css/img/mirror.jpg" />
+   </ImageView>
+   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="201.0" layoutY="110.0" prefHeight="25.0" prefWidth="91.0" text=".. Your name?" textAlignment="CENTER" textFill="#e8dfdf">
+      <font>
+         <Font name="Comic Sans MS Italic" size="13.0" />
+      </font>
+   </Label>
+   <TextField fx:id="playerName" alignment="CENTER" layoutX="193.0" layoutY="143.0" onKeyPressed="#onEnterName" prefHeight="26.0" prefWidth="108.0" promptText="Enter Name..">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font>
+   </TextField>
+   <Label fx:id="invalidName" alignment="CENTER" contentDisplay="CENTER" layoutX="151.0" layoutY="308.0" prefHeight="8.0" prefWidth="194.0" textFill="#c60000" visible="false" />
+   <Label fx:id="welcomeText" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="281.0" layoutY="204.0" lineSpacing="4.0" maxWidth="150.0" minHeight="69.0" minWidth="147.0" prefHeight="156.0" prefWidth="147.0" textAlignment="CENTER" visible="false" wrapText="true">
+      <font>
+         <Font name="Comic Sans MS" size="14.0" />
+      </font>
+      <graphic>
+         <AnchorPane prefHeight="140.0" prefWidth="250.0">
+            <Ellipse fill="WHITE" layoutX="125.0" layoutY="82.0" radiusX="104.0" radiusY="69.0" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" layoutX="211.0" layoutY="149.0" points="-22.0, -6.0, 37.0, -23.0, 0.0, -60.0" rotate="-100.3" stroke="WHITE" strokeType="INSIDE" />
+            <Button layoutX="-19.0" layoutY="151.0" mnemonicParsing="false" onAction="#onContinueButtonAction" styleClass="continue" text="Continue" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="12.0" />
+               </font>
+            </Button>
+         </AnchorPane>
+      </graphic>
+   </Label>
+   <Button alignment="CENTER" contentDisplay="CENTER" layoutX="222.0" layoutY="398.0" mnemonicParsing="false" onAction="#onLeaveButtonAction" text="Leave" textAlignment="CENTER">
+      <font>
+         <Font name="Comic Sans MS Italic" size="12.0" />
+      </font>
+   </Button>
+
+   <stylesheets>
+      <URL value="@../css/game.css" />
+   </stylesheets>
+</AnchorPane>
