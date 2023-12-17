@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0">
+<?import java.net.URL?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <ImageView fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../css/img/roomOneDark.jpg" />
+   </ImageView>
+   <Button alignment="CENTER" layoutX="256.0" layoutY="124.0" mnemonicParsing="false" prefHeight="177.0" prefWidth="48.0" styleClass="click" onAction="#onGirlButtonClicked">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
 
+   <stylesheets>
+      <URL value="@../css/game.css" />
+   </stylesheets>
 </AnchorPane>

@@ -4,4 +4,7 @@ module ICE_JAVAFX {
     requires javafx.media;
 
     opens main;
+    opens view;
+    opens controller;
+    opens entity;
 }

@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.stage.Stage;
+import view.ViewState;
+
 import java.io.IOException;
 import java.util.Objects;
 
@@ -17,13 +19,12 @@ public class Program extends Application {
         mediaPlayer.play();
 
         ViewState viewState = new ViewState();
+        viewState.setStage(stage);
         viewState.showGameMenu();
         Scene scene = new Scene(viewState.currentViewProperty().get());
         scene.rootProperty().bind(viewState.currentViewProperty());
-        viewState.setStage(stage);
         viewState.setStageTitle("Escape Room: The Haunted House");
         stage.setScene(scene);
-        viewState.setStageSize(stage);
         stage.show();
     }
 }

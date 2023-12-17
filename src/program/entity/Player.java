@@ -1,3 +1,3 @@
-package main;
+package entity;
 
 public record Player(String playerName) {}

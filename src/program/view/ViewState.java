@@ -1,4 +1,4 @@
-package main;
+package view;
 
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -6,6 +6,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import controller.FirstRoomController;
+import controller.GameMenuController;
+import controller.IntroductionPageController;
+import controller.WelcomePageController;
+
 import java.io.IOException;
 import java.util.Objects;
 
@@ -17,6 +22,7 @@ public class ViewState {
     private Parent welcomeView;
     private Parent firstRoomView;
     private Stage stage;
+    private Scene scene;
 
     public ReadOnlyObjectProperty<Parent> currentViewProperty() {
         return currentView.getReadOnlyProperty();
@@ -37,11 +43,14 @@ public class ViewState {
     public void showStoryIntroduction() throws IOException {
         if (storyIntroView == null) {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/view/story-introduction-page.fxml")));
-            loader.setController(new IntroductionPageController(this));
+            IntroductionPageController introductionPageController = new IntroductionPageController(this);
+
+            loader.setController(introductionPageController);
             storyIntroView = loader.load();
             setStageTitle("The Haunted Mansion: The Story");
         }
         currentView.set(storyIntroView);
+
     }
 
     public void showWelcomePage() throws IOException {
@@ -64,6 +73,23 @@ public class ViewState {
         currentView.set(firstRoomView);
     }
 
+
+    public Parent getGameMenuView() {
+        return gameMenuView;
+    }
+
+    public Parent getStoryIntroView() {
+        return storyIntroView;
+    }
+
+    public Parent getWelcomeView() {
+        return welcomeView;
+    }
+
+    public Parent getFirstRoomView() {
+        return firstRoomView;
+    }
+
     public void setStageSize(Stage stage) {
         stage.setMinWidth(500);
         stage.setMinHeight(500);
@@ -73,6 +99,18 @@ public class ViewState {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
     }
 
     public void setStageTitle(String title) {

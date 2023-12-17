@@ -1,27 +1,20 @@
-package main;
+package controller;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
+import entity.Player;
+import view.ViewState;
+
 import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
 
-public class WelcomePageController implements Initializable {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
+public class WelcomePageController implements ChangeListener<Parent> {
     @FXML
     private TextField playerName;
     @FXML
@@ -32,16 +25,17 @@ public class WelcomePageController implements Initializable {
 
     public WelcomePageController(ViewState viewState) {
         this.viewState = viewState;
+        this.viewState.currentViewProperty().addListener(this);
     }
 
     @FXML
     protected void onEnterName(KeyEvent keyEvent) {
         invalidName.setVisible(false);
         welcomeText.setVisible(false);
-        if(keyEvent.getCode() == KeyCode.ENTER ) {
+        if(keyEvent.getCode() == KeyCode.ENTER) {
             String input = playerName.getText();
             if (!input.matches(".*\\d+.*")) {
-                String firstLetter = input.substring(0,1);
+                String firstLetter = input.substring(0, 1);
                 String name = firstLetter.toUpperCase() + input.substring(1).toLowerCase();
                 Player player = new Player(name);
                 welcomeText.setVisible(true);
@@ -63,8 +57,18 @@ public class WelcomePageController implements Initializable {
         viewState.showGameMenu();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    private void setup() {
+        playerName.setText("");
+        welcomeText.setText("");
+        invalidName.setVisible(false);
+        welcomeText.setVisible(false);
+        viewState.setStageSize(viewState.getStage());
+    }
 
+    @Override
+    public void changed(ObservableValue<? extends Parent> observableValue, Parent oldParent, Parent newParent) {
+        if (newParent == viewState.getWelcomeView()) {
+            setup();
+        }
     }
 }
