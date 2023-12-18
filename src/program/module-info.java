@@ -5,7 +5,7 @@ module ICE_JAVAFX {
 
     opens main;
     opens view;
-    opens entity;
+    opens model.entity;
     opens controller.firstRoom;
     opens controller.gameIntro;
 }

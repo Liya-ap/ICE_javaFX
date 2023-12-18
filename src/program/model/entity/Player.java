@@ -1,3 +1,3 @@
-package entity;
+package model.entity;
 
 public record Player(String playerName) {}

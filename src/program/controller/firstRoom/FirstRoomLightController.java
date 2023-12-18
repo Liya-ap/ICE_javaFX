@@ -7,12 +7,14 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import model.firstRoom.FirstRoomLight;
 import view.ViewState;
 
 import java.io.IOException;
 
 public class FirstRoomLightController implements ChangeListener<Parent> {
     private final ViewState viewState;
+    private FirstRoomLight firstRoomLight;
     @FXML
     private ScrollPane scrollPane;
     @FXML
@@ -30,9 +32,7 @@ public class FirstRoomLightController implements ChangeListener<Parent> {
         goBack.setVisible(false);
         candle.setVisible(false);
 
-        firstRoomTextBox.setText("""
-                The room is now lit up and you can see everything more clearly.
-                """);
+        firstRoomTextBox.setText(firstRoomLight.getLitUpRoom());
         scrollPane.setFitToHeight(true);
     }
 
@@ -46,9 +46,7 @@ public class FirstRoomLightController implements ChangeListener<Parent> {
         goBack.setVisible(true);
         candle.setVisible(true);
 
-        firstRoomTextBox.setText("""
-                The candle is currently illuminating the room.
-                """);
+        firstRoomTextBox.setText(firstRoomLight.getGoNearCandle());
         scrollPane.setFitToHeight(true);
     }
 
@@ -74,6 +72,7 @@ public class FirstRoomLightController implements ChangeListener<Parent> {
 
     private void setup() {
         viewState.setRoomSize();
+        firstRoomLight = viewState.getFirstRoomLight();
         displayRoom();
     }
 

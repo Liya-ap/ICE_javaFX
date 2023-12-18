@@ -15,6 +15,7 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.gamIntro.IntroductionPage;
 import view.ViewState;
 
 import java.io.IOException;
@@ -22,8 +23,8 @@ import java.util.Objects;
 
 public class IntroductionPageController implements ChangeListener<Parent> {
     private final ViewState viewState;
+    private IntroductionPage introductionPage;
     private Timeline timeline;
-    private String storyText;
     private AudioClip mediaPlayer;
     private final int[] count = {0};
     @FXML
@@ -38,9 +39,8 @@ public class IntroductionPageController implements ChangeListener<Parent> {
         this.viewState.currentViewProperty().addListener(this);
     }
 
-    @FXML
     private void displayStory() {
-        char[] story = getCharacters();
+        char[] story = introductionPage.getCharacters();
 
         timeline = new Timeline(
                 new KeyFrame(
@@ -59,22 +59,6 @@ public class IntroductionPageController implements ChangeListener<Parent> {
         timeline.setCycleCount(story.length);
     }
 
-    private char[] getCharacters() {
-        storyText = """
-                Welcome, brave soul, to "The Haunted Mansion" – an escape room like no other.\s
-                I’m the GameMaster and I will try to help you where I can. \s
-                But I don’t have all the answers.\s
-                There are some things you have to figure out on your own. \s
-                You will be tested in different puzzles and obstacles. \s
-                Objects and items will come up along the way. \s
-                Remember them. \s
-                They’re important. \s
-                But don’t take too long. \s
-                Time is of the essence, someone or something may be watching you, waiting...""";
-
-        return storyText.toCharArray();
-    }
-
     private void beginNarrator() {
         Media media = new Media(Objects.requireNonNull(getClass().getResource("/sounds/Narrator.wav")).toExternalForm());
         mediaPlayer = new AudioClip(media.getSource());
@@ -91,20 +75,23 @@ public class IntroductionPageController implements ChangeListener<Parent> {
     @FXML
     protected void onSkipButtonAction() throws IOException {
         timeline.stop();
-        gameStory.setText(storyText);
+        gameStory.setText(introductionPage.getStory());
         clickToContinue.setVisible(true);
         skip.setVisible(false);
     }
 
     private void setup() {
         viewState.setGameIntroSize(viewState.getStage());
+        introductionPage = viewState.getIntroductionPage();
 
         count[0] = 0;
         gameStory.setText("");
         skip.setVisible(true);
         clickToContinue.setVisible(false);
+
         displayStory();
         beginNarrator();
+
         timeline.play();
         timeline.setOnFinished(event -> {
             clickToContinue.setVisible(true);

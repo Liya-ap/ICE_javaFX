@@ -8,12 +8,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
+import model.firstRoom.Paintings;
 import view.ViewState;
 
 import java.io.IOException;
 
 public class PaintingsController implements ChangeListener<Parent> {
     private final ViewState viewState;
+    private Paintings paintings;
     @FXML
     private Label firstRoomTextBox;
     @FXML
@@ -70,19 +72,7 @@ public class PaintingsController implements ChangeListener<Parent> {
         stickyNoteBig.setVisible(true);
         exitNote.setVisible(true);
 
-        noteRiddle.setText("""
-                What is the highest number between 1 and 1.000.000 that does not contain the letter “N” when said out loud?
-                
-                Take that number and subtract 19 from it.
-                Remember the result.
-                
-                Now take the number and add 351 to it.
-                Remember the result.
-                
-                You should now have a two-digit number and a three-digit number.
-                Put them together in the order you got them to make a five-digit number.
-                
-                Remember this final number. You'll need it.""");
+        noteRiddle.setText(paintings.getRiddle());
     }
 
     @FXML
@@ -93,26 +83,13 @@ public class PaintingsController implements ChangeListener<Parent> {
 
     protected void lookAtPaintings() {
         scrollPane.setFitToHeight(false);
-        firstRoomTextBox.setText("""
-                 You take a look at the 5 paintings on the wall.
-                 All of them depict something different.
-                 Different people, doing different things.
-                 They do have one thing in common though. They're all smiling.
-                 No matter what they're doing or what's happening in the painting,
-                 the people are smiling.
-                 
-                 In the middle of the biggest painting, you see a note..
-                """);
+        firstRoomTextBox.setText(paintings.getLookingAtPaintings());
     }
 
     @FXML
     protected void noteOnPaintingChecked() {
         scrollPane.setFitToHeight(true);
-        firstRoomTextBox.setText("""
-                 With that done you’ve now acquired a five-digit number.
-                 It looks like that's about all you can do with the paintings.
-                 Maybe these clues you've gathered can be used somewhere else?
-                """);
+        firstRoomTextBox.setText(paintings.getRiddleSolved());
     }
     @FXML
     protected void onGoBackButtonClicked() throws IOException {
@@ -120,12 +97,13 @@ public class PaintingsController implements ChangeListener<Parent> {
     }
 
     private void setup() {
+        paintings = viewState.getPaintings();
         displayPaintings();
     }
 
     @Override
     public void changed(ObservableValue<? extends Parent> observableValue, Parent oldParent, Parent newParent) {
-        if (newParent == viewState.getFirstRoomPaintings()) {
+        if (newParent == viewState.getFirstRoomPaintingsView()) {
             setup();
         }
     }

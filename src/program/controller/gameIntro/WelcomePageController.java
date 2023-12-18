@@ -2,26 +2,25 @@ package controller.gameIntro;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import entity.Player;
+import model.gamIntro.WelcomePage;
 import view.ViewState;
-
 import java.io.IOException;
 
 public class WelcomePageController implements ChangeListener<Parent> {
+    private final ViewState viewState;
+    private WelcomePage welcomePage;
     @FXML
     private TextField playerName;
     @FXML
     private Label invalidName;
     @FXML
     private Label welcomeText;
-    private final ViewState viewState;
 
     public WelcomePageController(ViewState viewState) {
         this.viewState = viewState;
@@ -33,16 +32,13 @@ public class WelcomePageController implements ChangeListener<Parent> {
         invalidName.setVisible(false);
         welcomeText.setVisible(false);
         if(keyEvent.getCode() == KeyCode.ENTER) {
-            String input = playerName.getText();
-            if (input.matches("\\p{L}+")) {
-                String firstLetter = input.substring(0, 1);
-                String name = firstLetter.toUpperCase() + input.substring(1).toLowerCase();
-                Player player = new Player(name);
+            boolean validPlayer = welcomePage.getPlayerName(playerName.getText());
+            if (validPlayer){
                 welcomeText.setVisible(true);
-                welcomeText.setText("Do you dare to continue " + player.playerName() + "?");
+                welcomeText.setText(welcomePage.getWelcomeMsg());
             } else {
                 invalidName.setVisible(true);
-                invalidName.setText("Name must only contain letters.");
+                invalidName.setText(welcomePage.getInvalidNameError());
             }
         }
     }
@@ -63,6 +59,7 @@ public class WelcomePageController implements ChangeListener<Parent> {
         invalidName.setVisible(false);
         welcomeText.setVisible(false);
         viewState.setGameIntroSize(viewState.getStage());
+        welcomePage = viewState.getWelcomePage();
     }
 
     @Override
