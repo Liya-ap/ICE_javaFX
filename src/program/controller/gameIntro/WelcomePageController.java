@@ -1,4 +1,4 @@
-package controller;
+package controller.gameIntro;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -21,7 +21,7 @@ public class WelcomePageController implements ChangeListener<Parent> {
     private Label invalidName;
     @FXML
     private Label welcomeText;
-    private ViewState viewState;
+    private final ViewState viewState;
 
     public WelcomePageController(ViewState viewState) {
         this.viewState = viewState;
@@ -34,7 +34,7 @@ public class WelcomePageController implements ChangeListener<Parent> {
         welcomeText.setVisible(false);
         if(keyEvent.getCode() == KeyCode.ENTER) {
             String input = playerName.getText();
-            if (!input.matches(".*\\d+.*")) {
+            if (input.matches("\\p{L}+")) {
                 String firstLetter = input.substring(0, 1);
                 String name = firstLetter.toUpperCase() + input.substring(1).toLowerCase();
                 Player player = new Player(name);
@@ -48,12 +48,12 @@ public class WelcomePageController implements ChangeListener<Parent> {
     }
 
     @FXML
-    protected void onContinueButtonAction(ActionEvent event) throws IOException {
-        viewState.showFirstRoom();
+    protected void onContinueButtonAction() throws IOException {
+        viewState.showFirstRoomDark();
     }
 
     @FXML
-    protected void onLeaveButtonAction(ActionEvent event) throws IOException {
+    protected void onLeaveButtonAction() throws IOException {
         viewState.showGameMenu();
     }
 
@@ -62,7 +62,7 @@ public class WelcomePageController implements ChangeListener<Parent> {
         welcomeText.setText("");
         invalidName.setVisible(false);
         welcomeText.setVisible(false);
-        viewState.setStageSize(viewState.getStage());
+        viewState.setGameIntroSize(viewState.getStage());
     }
 
     @Override

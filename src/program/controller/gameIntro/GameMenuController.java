@@ -1,4 +1,4 @@
-package controller;
+package controller.gameIntro;
 
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -28,7 +28,7 @@ public class GameMenuController implements ChangeListener<Parent> {
     }
 
     private void setup() {
-        viewState.setStageSize(viewState.getStage());
+        viewState.setGameIntroSize(viewState.getStage());
     }
 
     @Override

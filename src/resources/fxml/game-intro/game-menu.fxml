@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" stylesheets="@../css/game.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" stylesheets="@../../css/game.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <ImageView>
       <fitWidth>500</fitWidth>
       <preserveRatio>true</preserveRatio>
-      <Image url="@../css/img/hauntedMansion.jpg" />
+      <Image url="@../../css/img/hauntedMansion.jpg" />
    </ImageView>
    <ImageView fitHeight="395.0" fitWidth="244.0" layoutX="24.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../css/img/white-curtain.png" />
+      <Image url="@../../css/img/white-curtain.png" />
       <effect>
          <Bloom />
       </effect>
@@ -62,6 +62,6 @@
    </VBox>
 
    <stylesheets>
-      <URL value="@../css/game.css" />
+      <URL value="@../../css/game.css" />
    </stylesheets>
 </AnchorPane>

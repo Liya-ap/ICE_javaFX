@@ -1,2 +1,4 @@
 # ICE_javaFX
-(Download JavaFx and SceneBuilder)
+- Download JavaFX
+- Set "resources" folder as Resources Root
+- (Download Scene Builder)

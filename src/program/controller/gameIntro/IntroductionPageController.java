@@ -1,4 +1,4 @@
-package controller;
+package controller.gameIntro;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -21,25 +21,22 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class IntroductionPageController implements ChangeListener<Parent> {
-    @FXML
-    private Label gameStory;
-    private Stage stage;
     private final ViewState viewState;
     private Timeline timeline;
+    private String storyText;
+    private AudioClip mediaPlayer;
+    private final int[] count = {0};
+    @FXML
+    private Label gameStory;
     @FXML
     private Button clickToContinue;
     @FXML
     private Button skip;
-    private String storyText;
-    private AudioClip mediaPlayer;
 
     public IntroductionPageController(ViewState viewState) {
         this.viewState = viewState;
-
         this.viewState.currentViewProperty().addListener(this);
     }
-
-    private final int[] count = {0};
 
     @FXML
     private void displayStory() {
@@ -78,20 +75,6 @@ public class IntroductionPageController implements ChangeListener<Parent> {
         return storyText.toCharArray();
     }
 
-    @FXML
-    protected void onContinueButtonAction(ActionEvent event) throws IOException {
-        mediaPlayer.stop();
-        viewState.showWelcomePage();
-    }
-
-    @FXML
-    protected void onSkipButtonAction(ActionEvent event) throws IOException {
-        timeline.stop();
-        gameStory.setText(storyText);
-        clickToContinue.setVisible(true);
-        skip.setVisible(false);
-    }
-
     private void beginNarrator() {
         Media media = new Media(Objects.requireNonNull(getClass().getResource("/sounds/Narrator.wav")).toExternalForm());
         mediaPlayer = new AudioClip(media.getSource());
@@ -99,8 +82,22 @@ public class IntroductionPageController implements ChangeListener<Parent> {
         mediaPlayer.play();
     }
 
+    @FXML
+    protected void onContinueButtonAction() throws IOException {
+        mediaPlayer.stop();
+        viewState.showWelcomePage();
+    }
+
+    @FXML
+    protected void onSkipButtonAction() throws IOException {
+        timeline.stop();
+        gameStory.setText(storyText);
+        clickToContinue.setVisible(true);
+        skip.setVisible(false);
+    }
+
     private void setup() {
-        viewState.setStageSize(viewState.getStage());
+        viewState.setGameIntroSize(viewState.getStage());
 
         count[0] = 0;
         gameStory.setText("");

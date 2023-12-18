@@ -7,9 +7,9 @@
     -fx-background-color: black;
 }
 
-
-.game-title {
+.game-title, .died {
     -fx-font-family: "Ghastly Panic";
+    -fx-text-fill: #410404;
 }
 
 .play, .quit {
@@ -22,14 +22,45 @@
     -fx-border-color: #410404;
 }
 
-.play:pressed, .quit:pressed, .continue {
+.play:pressed, .quit:pressed, .continue, .go-back {
     -fx-border-style: solid solid solid solid;
     -fx-border-color: black;
     -fx-background-color: #410404;
     -fx-text-fill: white;
 }
 
-.click, .skip {
+.click, .skip, .exit {
     -fx-background-color: transparent;
     -fx-text-fill: #c00a0a;
 }
+
+.candle {
+    -fx-background-color: transparent;
+    -fx-text-fill: #d9d98a;
+}
+
+.go-back:hover, .candle:hover, .exit:hover {
+    -fx-underline: true;
+}
+
+.return {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.return:hover {
+    -fx-border-style: solid none solid none;
+    -fx-border-width: 2;
+    -fx-border-color: white;
+}
+
+.scroll-pane-note > .viewport, .scroll-pane-note {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+}
+
+.scroll-pane > .viewport, .scroll-pane, .anchor {
+    -fx-background-color: rgba(0, 0, 0, 0.2);
+    -fx-text-fill: white;
+}
+

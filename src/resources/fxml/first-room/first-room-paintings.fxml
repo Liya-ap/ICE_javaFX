@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <ImageView fitHeight="440.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../css/img/paintings.jpg" />
+    </ImageView>
+    <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutX="150.0" layoutY="315.0" prefHeight="71.0" prefViewportHeight="150.0" prefWidth="501.0" styleClass="scroll-pane">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="150.0" prefWidth="486.0" styleClass="anchor">
+            <Label fx:id="firstRoomTextBox" alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="143.0" prefWidth="489.0" textFill="WHITE" wrapText="true">
+                <font>
+                    <Font name="Arial Bold" size="13.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="DEFAULT" />
+                </cursor>
+            </Label>
+        </AnchorPane>
+    </ScrollPane>
+    <Button fx:id="goBack" layoutX="82.0" layoutY="361.0" mnemonicParsing="false" onAction="#onGoBackButtonClicked" styleClass="go-back" text="Go Back">
+        <font>
+            <Font name="Comic Sans MS Bold Italic" size="12.0" />
+        </font>
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+    </Button>
+    <ImageView fx:id="stickyNoteSmall" fitHeight="100.0" fitWidth="80.0" layoutX="687.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true" rotate="8.1">
+        <Image url="@../../css/img/sticky-note.png" />
+    </ImageView>
+   <Button fx:id="note" layoutX="696.0" layoutY="243.0" mnemonicParsing="false" onAction="#onNoteButtonClicked" prefHeight="62.0" prefWidth="63.0" rotate="9.5" styleClass="click">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor></Button>
+    <ImageView fx:id="stickyNoteBig" fitHeight="425.0" fitWidth="450.0" layoutX="198.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../css/img/sticky-note.png" />
+    </ImageView>
+
+    <ScrollPane fx:id="scrollPaneNote" hbarPolicy="NEVER" layoutX="241.0" layoutY="135.0" prefHeight="246.0" prefViewportHeight="400.0" prefWidth="302.0" rotate="2.0" style="-fx-background-color: #fffdaf;" styleClass="scroll-pane-note">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="286.0">
+            <Label fx:id="noteRiddle" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="5.0" prefHeight="700.0" prefWidth="275.0" textAlignment="JUSTIFY" wrapText="true">
+                <font>
+                    <Font name="Ink Free" size="18.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+            </Label>
+        </AnchorPane>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+    </ScrollPane>
+    <ImageView fx:id="exitNoteImg" fitHeight="62.0" fitWidth="47.0" layoutX="524.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../css/img/close-button.png" />
+    </ImageView>
+   <Button fx:id="exitNote" layoutX="529.0" layoutY="80.0" mnemonicParsing="false" onAction="#onExitNoteButtonClicked" prefHeight="34.0" prefWidth="36.0" styleClass="click">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor></Button>
+
+    <stylesheets>
+        <URL value="@../../css/game.css" />
+    </stylesheets>
+
+</AnchorPane>

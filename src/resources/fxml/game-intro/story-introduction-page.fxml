@@ -42,6 +42,6 @@
       </cursor></Button>
 
     <stylesheets>
-        <URL value="@../css/game.css" />
+        <URL value="@../../css/game.css" />
     </stylesheets>
 </AnchorPane>
